@@ -28,6 +28,7 @@ public class Hippodrome {
         game = new Hippodrome(horses);
 
         game.run();
+        game.printWinner();
 
     }
     public void run(){
@@ -40,7 +41,6 @@ public class Hippodrome {
                 e.printStackTrace();
             }
         }
-
     }
     public void move(){
 
@@ -52,6 +52,19 @@ public class Hippodrome {
             horse.print();
         for(int i=0; i<10; i++)
         System.out.println();
+
+    }
+    public Horse getWinner(){
+
+        Horse result=horses.get(0);
+        for(Horse horse:horses) {
+            if (horse.getDistance() > result.getDistance())
+                result = horse;
+        }
+        return result;
+    }
+    public void printWinner(){
+        System.out.println("Winner is "+getWinner().getName()+"!");
 
     }
 }
